@@ -1,0 +1,18 @@
+{
+  "name": "poi-service",
+  "version": "1.0.0",
+  "description": "An HTTP based REST API that allows to search in a collection of POIs and modify its items",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "koa",
+    "typescript",
+    "mongodb",
+    "geo"
+  ],
+  "author": "Denis Zatsepin <denis@zatsepin.me>",
+  "license": "ISC"
+}
