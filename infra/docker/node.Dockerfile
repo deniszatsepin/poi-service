@@ -3,7 +3,7 @@ FROM node:8
 ENV HOME /home/node
 WORKDIR $HOME/app
 
-COPY ./codebase/package*.json .
+COPY ./codebase/package*.json ./
 RUN npm install
 
 COPY ./codebase/service .
