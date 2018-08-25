@@ -4,7 +4,14 @@
   "description": "An HTTP based REST API that allows to search in a collection of POIs and modify its items",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "tslint -c tslint.json 'service/**/*.ts'",
+    "test:tdd": "mocha -R spec --require ts-node/register --watch --no-exit --watch-extensions ts ./service/**/*.spec.ts",
+    "test:debug": "mocha --inspect-brk=9229 -R spec --require ts-node/register --watch --watch-extensions ts ./service/**/*.spec.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deniszatsepin/poi-service.git"
   },
   "keywords": [
     "node",
@@ -14,5 +21,24 @@
     "geo"
   ],
   "author": "Denis Zatsepin <denis@zatsepin.me>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/koa": "^2.0.46",
+    "@types/mocha": "^5.2.5",
+    "@types/supertest": "^2.0.5",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "reflect-metadata": "^0.1.12",
+    "supertest": "^3.1.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typegoose": "^5.2.1",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "koa": "^2.5.2",
+    "mongoose": "^5.2.9",
+    "swagger2-koa": "^1.0.2"
+  }
 }
