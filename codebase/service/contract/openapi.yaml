@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  title: POI Service
+  description: An HTTP based REST API that allows to search in a collection of POIs and modify its items
+  version: "1.0"
+  contact:
+    name: Denis Zatsepin
+    email: denis@zatsepin.spb.ru
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: localhost:3333
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /poi:
+    post:
+      tags:
+        - poi
+      description: Create POI endpoint
+      responses:
+        200:
+          description: New POI
+          schema:
+            $ref: '#/definitions/Poi'
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: '#/definitions/Error'
+      parameters:
+        - name: newPoi
+          in: body
+          description: New POI data
+          required: true
+          schema:
+            $ref: '#/definitions/NewPoi'
+
+definitions:
+  Error:
+    required:
+      - error
+      - message
+    properties:
+      error:
+        type: string
+      message:
+        type: string
+
+  NewPoi:
+    required:
+      - name
+      - location
+    properties:
+      name: 
+        type: string
+      location:
+        type: array
+        items:
+          type: number
+        
+  Poi:
+    required:
+      - _id
+      - name
+      - location
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      location:
+        type: array
+        items:
+          type: number
