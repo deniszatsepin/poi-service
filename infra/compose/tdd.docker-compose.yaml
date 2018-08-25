@@ -13,14 +13,19 @@ services:
     environment:
       NODE_ENV: test
       APP_PORT: 3000
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: test_${DB_NAME}
     ports:
-      - ${APP_PORT}:3000
-      - 9229:9229
+      - "${APP_PORT}:3000"
+      - "9229:9229"
     volumes:
       - ../../codebase:/home/node/app
       - node_modules:/home/node/app/node_modules
-    command: bash -c "npm install && npm run tdd"
+    command: bash -c "npm install && npm run test:tdd"
   api-db:
     image: mongo:latest
+    ports:
+      - "27017:27017"
     volumes:
       - ../../tmp/data:/data/db
